@@ -5,22 +5,17 @@
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
 const app = express();
-const data = [
-     {name: "Đi chợ "},
-     {name: "Nấu cơm"},
-     {name: "Rửa bát"},
-     {name: "Học code tại CodersX"}
-];
-app.set('view engine', 'pug');
-app.set('views', './views');
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
   response.send("I love CodersX");
 });
 
 app.get("/todos", (req, res) => {
-   res.render('todos',{ works: data});
+  res.send(
+    "<ul> <li>Đi chợ</li> <li>Nấu cơm</li> <li>Rửa bát</li> <li>Học code tại CodersX </li> </ul>"
+  );
 });
+
 // listen for requests :)
 app.listen(process.env.PORT, () => {
   console.log("Server listening on port " + process.env.PORT);
